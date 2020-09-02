@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>{{data['title']}}</title>
+{% endblock %}
+
+{% block content %}
+<!--=== Search Block ===-->
+    <div class="search-block parallaxBg">
+        <div class="container">
+            <div class="col-md-7 col-md-offset-2">
+                <!-- <h1>Скачать <span class="color-green">Видео</span> Ютуб</h1> -->
+                <h1 style="font-size: 2.0em;"> <span class="color-white">{{data['title']}}</span></h1>
+                <form action="/" method="POST">
+                    <div class="input-group">
+                        <input type="text" name="link" class="form-control" placeholder="https://www.youtube.com/watch?v=rkAguCM2ZKE" required>
+                        <input name="title" value="{{data['title']}}" type="hidden">
+                        <span class="input-group-btn">
+                            <button class="btn-u btn-u-lg btn-u-red ladda-button" name="btn" data-style="zoom-out"><i class="fa fa-cloud-download"></i></button>
+                        </span>
+                    </div>
+                </form>
+
+
+                {% if data["video"] %}
+                <div class="funny-boxes funny-boxes-left-green">
+                    <div class="row">
+                        <div class="col-md-4 funny-boxes-img">
+                            <img class="img-responsive" src="{{data['video']['thumbnail_url']}}" alt="">
+                            <ul class="list-unstyled">
+
+                               <li><span class="glyphicon glyphicon-facetime-video"></span> {{data['video']['streams'][0]['filesize']}}</li>
+                               <li><span class="glyphicon glyphicon-time"></span> {{ convert_second_to_hours( data['video']['length'] ) }}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8">
+                            <h2 class="text-justify"><a href="{{data['video']['video.watch_url']}}">{{data['video']['title']}}</a></h2>
+                            {% for stream in  data['video']['streams'] %}
+                            <a href="{{stream['url']}}" class="btn-u btn-u-dark margin-bottom-10" type="button" target="_blanck"> {{stream['mime_type']}} | {{stream['filesize']}} | {{stream['subtype']}} <i class="fa fa-download"></i></a>
+                            {% endfor %}
+                            <hr>
+                        </div>
+                    </div>                            
+                </div>
+                {% endif %}
+
+                {% if data['error']%}
+                <div class="alert alert-warning fade in">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4 style="color:white">Ошибка! Что то пошло не так!</h4>
+                    <p style="font-size: 1.2em">Попробуйте повторить запрос</p>
+    
+                </div>
+                {% endif %}
+            </div>
+        </div>    
+    </div><!--/container-->     
+    <!--=== End Search Block ===-->
+
+    <!--=== Content ===-->
+    <div class="container content">
+        <!-- Top Categories -->
+        <div class="col-md-9 col-md-offset-1">
+            <div class="tab-v1">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Инструкция</a></li>
+                </ul>                
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="home">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Пользоваться сервисом очень просто:</h4>
+                                <ol style="font-size: 1.2em">
+                                    <li>Копируете ссылку с адресом видео, вставляете в форму и нажимаете кнопку загрузки.</li>
+                                    <li>Ожидаем 1-10 секунд.</li>
+                                    <li>Если все Окей то появится ссылка на закачку Видео или Ошибка тогда попробуйте другую ссылку.</li>
+                                    <li>Нажимаем на ссылку загрузки и далее на видео правой кнопкой мыши жмем Сохранить Как. </li>
+                                    <li>Выберите нужный путь куда сохранить Видео и ждите конца загрузки видео на ваше устройство.</li>
+                                </ol>
+                                <p style="font-size: 1.2em">Загружайте любимые видео с популярного портала Youtube.com к себе на компьютер или гаджет. Теперь это очень просто и быстро. Все что Вам нужно это просто вставить ссылку на нужное видео, которое необходимо скачать, после вывода результата выбираете нужный формат и сохраняете к себе на диск.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Categories -->
+    </div><!--/container-->     
+    <!--=== End Content ===-->
+{% endblock %}

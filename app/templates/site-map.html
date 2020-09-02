@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>{{data['title']}}</title>
+{% endblock %}
+
+
+{% block content %}
+<!--=== Search Block ===-->
+    <div class="search-block parallaxBg">
+        <div class="container">
+            <div class="col-md-12 text-left">
+
+            	<h1 style="font-size: 1.8em;">Популярные запросы пользователей на тему скачать видео с ютуб</h1>
+            	<p class="text-size-18">На данный странице представленны все запросы которые интересуют пользователей</p>
+            	{% for key in data['keys'] %}
+            	<div class="col-md-3">
+                        <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                            <h5><i class="fa fa-align-justify"></i><a class="link-color-red text-size-16 a-hover" href="{{key[2]}}">{{key[0]}}</a><br>Запросов в месяц: {{key[1]}}</h5>
+                        </div>
+                </div>
+                {% endfor %}     
+            </div>
+        </div>    
+    </div><!--/container-->     
+    <!--=== End Search Block ===-->
+{% endblock %}

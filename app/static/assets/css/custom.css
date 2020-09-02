@@ -1,0 +1,35 @@
+/* Add here all your css styles (customizations) */
+.map-h1{
+	font-size: 15px;
+}
+
+.text-size-16 {
+	font-size: 16px;
+}
+.text-size-18 {
+	font-size: 18px;
+}
+
+.link-color-red {
+	color: #c26f6f;
+}
+
+.a-hover:hover{
+	color:#FFACAC;
+}
+
+
+.footer a, .copyright a, .footer a:hover, .copyright a:hover {
+	color:#c26f6f;
+}
+
+.h1-404 {
+	font-size: 120px;
+}
+body {
+	background-color: #1c1c1c;
+}
+
+.margin-left-10 {
+	align-items: center;
+}
