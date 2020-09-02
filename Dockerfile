@@ -12,13 +12,14 @@ ENV path /application
 WORKDIR ${path}
 
 COPY requirement.txt requirement.txt
+COPY replacefix.py replacefix.py
 
-RUN python -m venv venv
 RUN pip install -r requirement.txt
-
 COPY app app
+
+RUN python replacefix.py /usr/local/lib/python3.6/site-packages/pytube/extract.py
 
 ENV FLASK_APP main.py
 ENV APP_PATH ${path}/app
 
-CMD [". venv/bin/activate && cd app && python main.py"]
+CMD ["python app/main.py"]

@@ -23,7 +23,7 @@ def query_video(youtube_url):
     video = {}
     try:
         video = get_video( youtube_url )
-    except json.decoder.JSONDecodeError as err:
+    except Exception as err:
         print("Error: ",err)
     return video
 
