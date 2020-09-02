@@ -22,4 +22,4 @@ RUN python replacefix.py /usr/local/lib/python3.6/site-packages/pytube/extract.p
 ENV FLASK_APP main.py
 ENV APP_PATH ${path}/app
 
-CMD ["python app/main.py"]
+CMD python app/main.py
