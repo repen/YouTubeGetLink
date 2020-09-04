@@ -28,15 +28,14 @@
                         <div class="col-md-4 funny-boxes-img">
                             <img class="img-responsive" src="{{data['video']['thumbnail_url']}}" alt="">
                             <ul class="list-unstyled">
-
-                               <li><span class="glyphicon glyphicon-facetime-video"></span> {{data['video']['streams'][0]['filesize']}}</li>
+                               <li><span class="glyphicon glyphicon-facetime-video"></span> {{ sizeof_fmt( data['video']['streams'][0]['filesize'] ) }}</li>
                                <li><span class="glyphicon glyphicon-time"></span> {{ convert_second_to_hours( data['video']['length'] ) }}</li>
                             </ul>
                         </div>
                         <div class="col-md-8">
-                            <h2 class="text-justify"><a href="{{data['video']['video.watch_url']}}">{{data['video']['title']}}</a></h2>
+                            <h2 class="text-justify"><a target="_blank" href="{{data['video']['watch_url']}}">{{data['video']['title']}}</a></h2>
                             {% for stream in  data['video']['streams'] %}
-                            <a href="{{stream['url']}}" class="btn-u btn-u-dark margin-bottom-10" type="button" target="_blanck"> {{stream['mime_type']}} | {{stream['filesize']}} | {{stream['subtype']}} <i class="fa fa-download"></i></a>
+                            <a href="{{stream['url']}}" class="btn-u btn-u-dark margin-bottom-10" type="button" target="_blanck"> {{stream['mime_type']}} | {{sizeof_fmt( stream['filesize'] ) }} | {{stream['subtype']}} <i class="fa fa-download"></i></a>
                             {% endfor %}
                             <hr>
                         </div>

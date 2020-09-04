@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests, csv, os, json
 from youtu import get_video
+from datetime import datetime
 from waitress import serve
 PATH = os.getenv("APP_PATH", "/home/repente/prog/python/projects/YouTubeLink/app")
 
@@ -15,6 +16,8 @@ def load_csv(path):
             result.append(row)
     return result
 
+
+
 def query_video(youtube_url):
     def convert_second_to_hours(second):
         import time
@@ -25,6 +28,7 @@ def query_video(youtube_url):
         video = get_video( youtube_url )
     except Exception as err:
         print("Error: ",err)
+    # import pdb;pdb.set_trace()
     return video
 
 
@@ -37,7 +41,20 @@ def utility_processor():
         import time
         return time.strftime('%H:%M:%S', time.gmtime(seconds))
 
-    return dict(convert_second_to_hours=convert_second_to_hours,)
+
+    def get_year():
+        return datetime.now().strftime("%Y")
+
+    def sizeof_fmt(num, suffix='b'):
+        for unit in ['','Ki','M','G','T','P','E','Z']:
+            if abs(num) < 1024.0:
+                return "%3.1f%s%s" % (num, unit, suffix)
+            num /= 1024.0
+        return "%.1f%s%s" % (num, 'Yi', suffix)
+
+    return dict(
+        convert_second_to_hours=convert_second_to_hours,
+        sizeof_fmt=sizeof_fmt, get_year= get_year)
 
 @app.route("/", methods = ["GET"])
 def index():
