@@ -5,6 +5,10 @@ from datetime import datetime
 from waitress import serve
 PATH = os.getenv("APP_PATH", "/home/repente/prog/python/projects/YouTubeLink/app")
 
+os.environ["HTTP_PROXY"]  = "http://185.232.168.109:9193"
+os.environ["HTTPS_PROXY"] = "http://185.232.168.109:9193"
+
+
 app = Flask(__name__)
 
 
@@ -23,11 +27,11 @@ def query_video(youtube_url):
         import time
         return time.strftime('%H:%M:%S', time.gmtime(second))
 
-    video = {}
-    try:
-        video = get_video( youtube_url )
-    except Exception as err:
-        print("Error: ",err)
+    # video = {}
+    # try:
+    video = get_video( youtube_url )
+    # except Exception as err:
+    #     print("Error: ",err)
     # import pdb;pdb.set_trace()
     return video
 
