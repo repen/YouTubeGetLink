@@ -27,11 +27,11 @@ def query_video(youtube_url):
         import time
         return time.strftime('%H:%M:%S', time.gmtime(second))
 
-    # video = {}
-    # try:
-    video = get_video( youtube_url )
-    # except Exception as err:
-    #     print("Error: ",err)
+    video = {}
+    try:
+        video = get_video( youtube_url )
+    except Exception as err:
+        print("Error: ", err)
     # import pdb;pdb.set_trace()
     return video
 
