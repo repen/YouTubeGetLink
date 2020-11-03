@@ -5,7 +5,7 @@
 #docker run --name youtube-app -p 8008:5000 youtube:latest
 #docker run --name youtube-app --network=mynet -d --restart=always youtube:latest
 #0.0.0.0:8000->5000/tcp     youtube-app
-#docker build -t youtube:latest . && docker run --name youtube-app -d -p 8000:5000 youtube:latest
+#docker rm -f  youtube-app;git pull && docker build -t youtube:latest . && docker run --name youtube-app -d -p 8000:5000 youtube:latest
 FROM python:3.6-alpine
 
 
@@ -17,6 +17,7 @@ COPY requirement.txt requirement.txt
 COPY replacefix.py replacefix.py
 
 RUN pip install -r requirement.txt
+RUN pip install git+git://github.com/nficano/pytube.git
 COPY app app
 
 RUN python replacefix.py /usr/local/lib/python3.6/site-packages/pytube/extract.py

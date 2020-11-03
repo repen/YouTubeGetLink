@@ -6,6 +6,7 @@ todo.md
 # C extensions
 *.so
 service/
+install_py
 .idea
 node_modules
 # Distribution / packaging
