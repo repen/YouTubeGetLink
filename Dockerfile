@@ -6,7 +6,7 @@
 #docker run --name youtube-app --network=mynet -d --restart=always youtube:latest
 #0.0.0.0:8000->5000/tcp     youtube-app
 #docker rm -f  youtube-app;git pull && docker build -t youtube:latest . && docker run --name youtube-app -d -p 8000:5000 youtube:latest
-FROM python:3.6-alpine
+FROM python:3.6
 
 
 ENV path /application
@@ -15,6 +15,10 @@ WORKDIR ${path}
 
 COPY requirement.txt requirement.txt
 COPY replacefix.py replacefix.py
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
 
 RUN pip install -r requirement.txt
 RUN pip install git+git://github.com/nficano/pytube.git
