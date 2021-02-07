@@ -1,22 +1,25 @@
 {
-	"name": "webapp", 
-	"version": "1.0.0", 
-	"description": "", 
-	"main": "index.js", 
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1", 
-		"start": "webpack", 
-		"watch": "webpack --watch --devtool eval-source-map", 
-		"style": "sass --no-source-map style/base.scss:style/style.min.css", 
-		"wstyle": "sass style/base.scss style/style.min.css --watch", 
-		"style-min": "sass style/base.scss style/style.min.css --style compressed"
-	}, 
-	"keywords": [], 
-	"author": "", 
-	"license": "ISC", 
-	"devDependencies": {
-		"webpack": "^5.1.3", "webpack-cli": "^4.1.0"
-	}, "dependencies": {
-		"sass": "^1.27.0"
-	}
+  "author": "",
+  "dependencies": {
+    "sass": "^1.32.6"
+  },
+  "description": "",
+  "devDependencies": {
+    "webpack": "^5.21.1",
+    "webpack-cli": "^4.5.0"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "webapp",
+  "scripts": {
+    "start": "webpack -d",
+    "style": "sass --no-source-map style/base.scss:style/style.min.css",
+    "style-min": "sass style/base.scss style/style.min.css --style compressed",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch --devtool source-map",
+    "watchprod": "webpack --watch --mode=production",
+    "wstyle": "sass style/base.scss style/style.min.css --watch"
+  },
+  "version": "1.0.0"
 }

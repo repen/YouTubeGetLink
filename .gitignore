@@ -27,9 +27,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-app/static/webapp/package-lock.json
-app/static/webapp/package.json
-app/static/webapp/package.json
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
