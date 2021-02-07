@@ -5,8 +5,8 @@ from datetime import datetime
 from waitress import serve
 PATH = os.getenv("APP_PATH", "/home/repente/prog/python/projects/YouTubeLink/app")
 
-os.environ["HTTP_PROXY"]  = "http://91.188.241.117:9676"
-os.environ["HTTPS_PROXY"] = "http://91.188.241.117:9676"
+os.environ["HTTP_PROXY"]  = "http://91.188.243.208:9358"
+os.environ["HTTPS_PROXY"] = "http://91.188.243.208:9358"
 
 
 app = Flask(__name__)
